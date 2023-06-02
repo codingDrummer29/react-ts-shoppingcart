@@ -4,10 +4,13 @@ import Home from "./pages/Home";
 import Store from "./pages/Store";
 import About from "./pages/About";
 import FourZeroFour from "./pages/FourZeroFour";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <>
+      <Navbar />
+
       <div className="px-12 py-6">
         <Routes>
           <Route path="/" element={<Home />} />
