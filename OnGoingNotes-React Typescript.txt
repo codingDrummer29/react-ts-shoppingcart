@@ -16,3 +16,8 @@ SOURCE: WebDevSimplified https://www.youtube.com/watch?v=lATafp15HWA
     -   Import this file to main.tsx and update the App.tsx to test the css.
     -   Restart the server.
     -   Minor stylings done and Navbar set with a static cart button
+    -   For store, data > storeItems.json created as static data. As images are needed those are also sourced acccrodingly.
+    -   Created a StoreItem.tsx component to be rendered withing the Store.tsx component by looping each storeItem data.
+    -   Inside the StoreItem.tsx file populating the data by mentioning the props type.
+    -   As to format the price with according to the local Intl format, using a util > formatCurrency function that excepts a number and formats that in this case in USD.
+    

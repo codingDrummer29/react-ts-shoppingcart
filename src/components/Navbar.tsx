@@ -5,7 +5,7 @@ import CartIcon from "../assets/icons/cart.svg";
 const Navbar = () => {
   return (
     <>
-      <div className="flex justify-between items-center bg-white shadow-md sticky px-12 h-16">
+      <div className="flex justify-between items-center bg-white shadow-md sticky top-0 px-12 h-16">
         {/* ----- Navbar ----- */}
         <nav className=" flex justify-start items-center gap-4 h-full">
           <NavLink to={"/"}>
