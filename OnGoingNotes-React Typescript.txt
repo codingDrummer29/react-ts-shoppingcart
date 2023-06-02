@@ -1,0 +1,17 @@
+SOURCE: WebDevSimplified https://www.youtube.com/watch?v=lATafp15HWA
+
+->  Project setup:
+    -   Node version >= 18
+    -   At your desired project directory run command "yarn create vite .".
+    -   yarn
+    -   Delete unneccessary files
+    -   yarn dev
+    -   INSTALL: yarn add react-router-dom tailwindcss postcss autoprefixer
+    -   npx tailwindcss init -p
+    -   Update ttailwind.config.js > content > "./src/**/*.{js,jsx,ts,tsx}",
+    -   Include tailwind imports to main.css files
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+    -   Import this file to main.tsx and update the App.tsx to test the css.
+    -   Restart the server.
