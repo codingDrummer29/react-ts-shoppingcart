@@ -15,3 +15,4 @@ SOURCE: WebDevSimplified https://www.youtube.com/watch?v=lATafp15HWA
             @tailwind utilities;
     -   Import this file to main.tsx and update the App.tsx to test the css.
     -   Restart the server.
+    -   Minor stylings done and Navbar set with a static cart button
