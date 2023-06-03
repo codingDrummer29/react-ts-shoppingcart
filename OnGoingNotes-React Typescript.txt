@@ -39,3 +39,13 @@ Now in order to use these 4 context functions we need a store which we will crea
             };
 Now we need to define the function to maintain the increment/decrement/removal of the store items.
     -   Define each functions and pass them in the Provider element's value object. Once all are added, all the errors will be gone from the file.
+As we have defined them, now we will use them inside the StoreItem.tsx file
+    -   In the StoreItem.tsx:
+            import { useShoppingCart } from "../context/ShoppingCartContext";
+            const {
+                getItemQuantiy,
+                increaseItemQuantity,
+                decreaseItemQuantity,
+                removeCartItem,
+            } = useShoppingCart();
+    -   Add all these functions to the buttons 
