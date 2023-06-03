@@ -48,4 +48,7 @@ As we have defined them, now we will use them inside the StoreItem.tsx file
                 decreaseItemQuantity,
                 removeCartItem,
             } = useShoppingCart();
-    -   Add all these functions to the buttons 
+    -   Add all these functions to the buttons
+Now we have to maintain the cart component. Opne/Close/Items in cart etc. For that we need to add the required functions inside our ShoppingCartContext.
+    -   respective functions and variables passed on to the Provider for the cart component.
+    -   We will modify the Navbar > Cart button for this

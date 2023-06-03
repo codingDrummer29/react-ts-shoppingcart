@@ -13,6 +13,10 @@ type ShoppingCartContext = {
   increaseItemQuantity: (id: number) => void;
   decreaseItemQuantity: (id: number) => void;
   removeCartItem: (id: number) => void;
+  openCart: () => void;
+  closeCart: () => void;
+  cartQuantity: number;
+  cartItems: CartItem[];
 };
 
 type CartItem = {
@@ -22,6 +26,7 @@ type CartItem = {
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext); // this means that this context has the 4 functions as we have defined in the type defination section
 
+// --- This is actuallu our custom hook
 export const useShoppingCart = () => {
   return useContext(ShoppingCartContext);
 };
@@ -29,6 +34,7 @@ export const useShoppingCart = () => {
 // We are creating a Store provider using useContext hook
 export const ShoppingCartProvider = ({ children }: ShoppingCartProvider) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const getItemQuantiy = (id: number) => {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
@@ -68,6 +74,15 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProvider) => {
     });
   };
 
+  const openCart = () => setIsCartOpen(true);
+
+  const closeCart = () => setIsCartOpen(false);
+
+  const cartQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0
+  );
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -75,6 +90,10 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProvider) => {
         increaseItemQuantity,
         decreaseItemQuantity,
         removeCartItem,
+        openCart,
+        closeCart,
+        cartQuantity,
+        cartItems,
       }}
     >
       {children}
