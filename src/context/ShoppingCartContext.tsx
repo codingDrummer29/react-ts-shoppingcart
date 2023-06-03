@@ -1,20 +1,82 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
-import { useContext, createContext, ReactNode } from "react";
+import { useContext, createContext, ReactNode, useState } from "react";
 
+// As typse needs to be mentioned, this ReactNode type means it's a React context
 type ShoppingCartProvider = {
   children: ReactNode;
 };
 
-const ShoppingCartContext = createContext({});
+// This is ther type defination of the ShoppingCartContext which has 4 functions
+type ShoppingCartContext = {
+  getItemQuantiy: (id: number) => number;
+  increaseItemQuantity: (id: number) => void;
+  decreaseItemQuantity: (id: number) => void;
+  removeCartItem: (id: number) => void;
+};
+
+type CartItem = {
+  id: number;
+  quantity: number;
+};
+
+const ShoppingCartContext = createContext({} as ShoppingCartContext); // this means that this context has the 4 functions as we have defined in the type defination section
 
 export const useShoppingCart = () => {
   return useContext(ShoppingCartContext);
 };
 
+// We are creating a Store provider using useContext hook
 export const ShoppingCartProvider = ({ children }: ShoppingCartProvider) => {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  const getItemQuantiy = (id: number) => {
+    return cartItems.find((item) => item.id === id)?.quantity || 0;
+  };
+
+  const increaseItemQuantity = (id: number) => {
+    setCartItems((cartItems) => {
+      if (cartItems.find((item) => item.id === id) == null) {
+        return [...cartItems, { id, quantity: 1 }];
+      } else {
+        return cartItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else return item;
+        });
+      }
+    });
+  };
+
+  const decreaseItemQuantity = (id: number) => {
+    setCartItems((cartItems) => {
+      if (cartItems.find((item) => item.id === id)?.quantity === 1) {
+        return cartItems.filter((item) => item.id !== id);
+      } else {
+        return cartItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else return item;
+        });
+      }
+    });
+  };
+
+  const removeCartItem = (id: number) => {
+    setCartItems((cartItems) => {
+      return cartItems.filter((item) => item.id !== id);
+    });
+  };
+
   return (
-    <ShoppingCartContext.Provider value={{}}>
+    <ShoppingCartContext.Provider
+      value={{
+        getItemQuantiy,
+        increaseItemQuantity,
+        decreaseItemQuantity,
+        removeCartItem,
+      }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   );
