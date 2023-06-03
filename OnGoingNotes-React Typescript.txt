@@ -20,4 +20,3 @@ SOURCE: WebDevSimplified https://www.youtube.com/watch?v=lATafp15HWA
     -   Created a StoreItem.tsx component to be rendered withing the Store.tsx component by looping each storeItem data.
     -   Inside the StoreItem.tsx file populating the data by mentioning the props type.
     -   As to format the price with according to the local Intl format, using a util > formatCurrency function that excepts a number and formats that in this case in USD.
-    
