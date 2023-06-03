@@ -8,6 +8,8 @@ type StoreItemProps = {
 };
 
 const StoreItem = ({ id, name, price, imageUrl }: StoreItemProps) => {
+  const quantity = 0;
+
   return (
     <>
       <div className="flex flex-col gap-4 w-full bg-white shadow rounded">
@@ -22,6 +24,40 @@ const StoreItem = ({ id, name, price, imageUrl }: StoreItemProps) => {
           <span className="italic fornt-medium text-gray-400">
             {formatCurrency(price)}
           </span>
+        </div>
+
+        {/* --- Add to cart --- */}
+        <div className="mt-aouto w-full px-4 pb-4">
+          {quantity !== 0 ? (
+            <>
+              <button className="w-full p-2 text-center bg-blue-500 hover:bg-white text-white hover:text-blue-500 border border-blue-500 rounded-md transition-colors">
+                Add To Cart
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="flex flex-col gap-3 w-full items-center">
+                {/* - Add - */}
+                <div className="flex gap-4 items-center">
+                  <button className="bg-blue-500 text-white rounded-md p-2">
+                    -
+                  </button>
+                  <div className="">
+                    <span className="text-lg font-semibold">{quantity}</span>
+                    <span className=""> in cart</span>
+                  </div>
+                  <button className="bg-blue-500 text-white rounded-md p-2">
+                    +
+                  </button>
+                </div>
+
+                {/* - Remove - */}
+                <button className="w-20 bg-red-500 text-white rounded-md p-2">
+                  Remove
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

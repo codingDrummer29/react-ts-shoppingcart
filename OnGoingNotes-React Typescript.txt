@@ -15,8 +15,14 @@ SOURCE: WebDevSimplified https://www.youtube.com/watch?v=lATafp15HWA
             @tailwind utilities;
     -   Import this file to main.tsx and update the App.tsx to test the css.
     -   Restart the server.
+
+->  Into the project:
     -   Minor stylings done and Navbar set with a static cart button
     -   For store, data > storeItems.json created as static data. As images are needed those are also sourced acccrodingly.
     -   Created a StoreItem.tsx component to be rendered withing the Store.tsx component by looping each storeItem data.
     -   Inside the StoreItem.tsx file populating the data by mentioning the props type.
     -   As to format the price with according to the local Intl format, using a util > formatCurrency function that excepts a number and formats that in this case in USD.
+    -   Added minor styling for the 'Add to cart' functionality.
+As we are using static data, we will use useContext hook to create a providor and wrap the App with it.
+    -   Create src > context > ShoppingCartContext.tsx (as it will return a Provider element) and a  useShoppingCart() context function.
+    -   We then wrap the App element inside main.tsx file.
