@@ -4,7 +4,7 @@ import CartIcon from "../assets/icons/cart.svg";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 
 const Navbar = () => {
-  const { cartQuantity } = useShoppingCart();
+  const { cartQuantity, openCart } = useShoppingCart();
 
   return (
     <>
@@ -32,7 +32,10 @@ const Navbar = () => {
         {cartQuantity !== 0 ? (
           <>
             <div className="relative transition-opacity">
-              <button className="rounded-full h-10 w-10 px-1.5 py-0 bg-white hover:bg-slate-300 transition-all border border-black">
+              <button
+                className="rounded-full h-10 w-10 px-1.5 py-0 bg-white hover:bg-slate-300 transition-all border border-black"
+                onClick={openCart}
+              >
                 <img className="h-6" src={CartIcon} alt="cart" />
               </button>
 

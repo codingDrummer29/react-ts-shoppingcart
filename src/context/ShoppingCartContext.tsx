@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 import { useContext, createContext, ReactNode, useState } from "react";
+import ShoppingCart from "../components/ShoppingCart";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 // As typse needs to be mentioned, this ReactNode type means it's a React context
 type ShoppingCartProvider = {
@@ -33,7 +35,10 @@ export const useShoppingCart = () => {
 
 // We are creating a Store provider using useContext hook
 export const ShoppingCartProvider = ({ children }: ShoppingCartProvider) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+    "shopping-cart",
+    []
+  );
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const getItemQuantiy = (id: number) => {
@@ -97,6 +102,8 @@ export const ShoppingCartProvider = ({ children }: ShoppingCartProvider) => {
       }}
     >
       {children}
+
+      <ShoppingCart isOpen={isCartOpen} />
     </ShoppingCartContext.Provider>
   );
 };

@@ -52,3 +52,10 @@ As we have defined them, now we will use them inside the StoreItem.tsx file
 Now we have to maintain the cart component. Opne/Close/Items in cart etc. For that we need to add the required functions inside our ShoppingCartContext.
     -   respective functions and variables passed on to the Provider for the cart component.
     -   We will modify the Navbar > Cart button for this
+We have used a FlowBite sidebar component and miodified it a little to work on our env.
+    -   Placed the ShoppingCart component inside the Provider component as we need this to render over the pages.
+    -   Placed the open close functionality to respective buttons.
+    -   Populated the cart item details
+    -   Added the total cart amount logic
+Upto this, our cart logic is done. Only thing left is that we want to store the data from state to localStorage so that page reload/refresh doesn't crash our app.
+We will create a hook to access the localStorage and use that to the Provider.
